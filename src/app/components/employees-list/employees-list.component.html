@@ -1,0 +1,40 @@
+<!-- code base from bootstrap -->
+<!-- margin top 4 -->
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <span class="h3">Employees List</span>
+
+            <!-- typed in vs code as button.btn.btndark.btn-lg.float-right-->
+            <button class="btn btn-dark btn-lg float-right" routerLink="/employee-create">Add User</button><br>
+
+            <!-- table only when not empty -->
+            <h5 style="margin-top: 30px;" *ngIf="employees.length == 0">no data to display</h5>
+            <table *ngIf="employees.length > 0" class="table mt-5 table-striped">
+                <thead>
+                    <tr>
+                        <th>First</th>
+                        <th>Last</th>
+                        <th>ID</th>
+                        <th>Salary</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- to show in html and traverse the array employee data -->
+                    <tr *ngFor="let employee of employees">
+                        <td>{{ employee.first_name }}</td>
+                        <td>{{ employee.last_name }}</td>
+                        <td>{{ employee.document_id |number }}</td>
+                        <td>{{ employee.salary | currency }}</td>
+                        <!-- to complete stripp font with icons -->
+                        <td>
+                            <i class="fas fa-edit fa-lg text-info mr-2" [routerLink]="['/employee-edit/', employee.id]"></i>
+                            <i (click)="deleteEmployee(employee.id)" class="fas fa-trash-alt fa-lg text-danger"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

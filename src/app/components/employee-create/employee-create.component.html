@@ -1,0 +1,47 @@
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-lg-5 offset-lg-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>{{ event_title }}
+
+                        <!-- spinner to wait the submission in db -->
+                        <div *ngIf="loading" spinner-border float-right role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                    </h3>
+
+                    <!-- message to fields verification -->
+                    <span *ngIf="subbmitted && employeeCreate.invalid" class="badge badge-danger">YOU MUST FILL IN ALL
+                        OF THE FIELDS</span>
+
+                    <!-- formGroup link the HMTL form with the TS form -->
+                    <!-- ngSubmit -->
+                    <form class="mt-4" [formGroup]="employeeCreate" (ngSubmit)="employeeSubmitEdit()">
+                        <div class="row">
+                            <div class="col">
+
+                                <!-- formControlName: Angular selector to link wach html value to ts form -->
+                                <input type="text" class="form-control form-control-lg" formControlName="first_name"
+                                    placeholder="First Name">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-lg" formControlName="last_name"
+                                    placeholder="Last Name">
+                            </div>
+                        </div>
+                        <input type="number" class="form-control form-control-lg mt-3" formControlName="document_id"
+                            placeholder="ID">
+                        <input type="number" class="form-control form-control-lg mt-3" formControlName="salary"
+                            placeholder="Salary">
+                        <div class="mt-3">
+                            <button type="text" class="btn a btn-secondary btn-lg" style="margin-right: 6px;"
+                                routerLink="/employees-list">Home</button>
+                            <button type="submit" class="btn btn-dark btn-lg">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
