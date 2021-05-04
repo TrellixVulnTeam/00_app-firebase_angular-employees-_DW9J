@@ -91,3 +91,8 @@ follow steps
 
 ## toastr Angular
 https://www.npmjs.com/package/ngx-toastr
+
+## to master
+* fix dave when edit
+* highlight the missed field
+* Allow enter key save the employee
